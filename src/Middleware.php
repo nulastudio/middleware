@@ -73,7 +73,7 @@ class Middleware
         $handler = $this->destination;
         $params  = $this->goods;
         $finish  = $this->finish;
-        foreach ($this->through as $next) {
+        foreach (array_reverse($this->through) as $next) {
             $handler = function (...$params) use ($next, $handler) {
                 return $next($handler, ...$params);
             };
