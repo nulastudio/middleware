@@ -78,7 +78,10 @@ class Middleware
                 return $next($handler, ...$params);
             };
         }
-        return function () use ($handler, $params, $finish) {
+        return function (...$override_params) use ($handler, $params, $finish) {
+            if (count($override_params)) {
+                $params = $override_params;
+            }
             $return = $handler(...$params);
             return is_callable($finish) ? $finish($params, $return) : $return;
         };
