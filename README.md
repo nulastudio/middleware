@@ -86,6 +86,31 @@ array(3) {
 */
 ```
 
+### overridable params
+```php
+$middleware = new nulastudio\Middleware;
+
+$pack = $middleware->send()->to(function (...$goods) {
+    var_dump($goods);
+    return $goods;
+})->pack();
+
+$return = $pack(1,2,3);
+
+// or
+
+$pack = $middleware->send(4,5,6)->to(function (...$goods) {
+    var_dump($goods);
+    return $goods;
+})->pack();
+
+$return = $pack(1,2,3);
+
+// output:
+// 1,2,3
+
+```
+
 ## Reference
 * Middleware `send` (...$goods)
     - `goods` will be passed to `$destination`.
