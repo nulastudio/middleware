@@ -15,6 +15,11 @@ class Middleware
         $this->through = [];
     }
 
+    public static function newInstance()
+    {
+        return new static();
+    }
+
     public function send(...$goods)
     {
         $this->goods = $goods;
