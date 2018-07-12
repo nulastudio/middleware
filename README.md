@@ -117,6 +117,7 @@ $return = $pack(1,2,3);
     - `goods` will be passed to `$destination`.
 * Middleware `to` (callable $destination)
     - `destination` `destination` gets two arguments ($next, $params) and must return new values or `$params`. `$next` is the next middleware callback, `$params` is the value returned from previous middleware callback, the first middleware callback will get the value passed to `send`.
+* Middleware `reset` empty all middlewares.
 * Middleware `through` ($anywhere, bool $reset = false)
     - `anywhere` a callback or set of callbacks.
     - `reset` empty the through callbacks before add a callback.

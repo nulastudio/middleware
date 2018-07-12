@@ -36,6 +36,12 @@ class Middleware
         return $this;
     }
 
+    public function reset()
+    {
+        $this->through = [];
+        return $this;
+    }
+
     public function through($anywhere, bool $reset = false)
     {
         if ($reset) {
