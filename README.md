@@ -112,6 +112,7 @@ $return = $pack(1,2,3);
 ```
 
 ## Reference
+* Middleware `newInstance` static method, return a new Middleware instance.
 * Middleware `send` (...$goods)
     - `goods` will be passed to `$destination`.
 * Middleware `to` (callable $destination)
