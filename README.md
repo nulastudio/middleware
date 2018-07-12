@@ -10,7 +10,7 @@ send() --------------------> to() --------------------> finish()
 
 ## Install
 ```
-composer require nulastudio\middleware
+composer require nulastudio/middleware
 ```
 
 ## Usage
