@@ -119,8 +119,12 @@ $return = $pack(1,2,3);
     - `destination` `destination` gets two arguments ($next, $params) and must return new values or `$params`. `$next` is the next middleware callback, `$params` is the value returned from previous middleware callback, the first middleware callback will get the value passed to `send`.
 * Middleware `reset` empty all middlewares.
 * Middleware `through` ($anywhere, bool $reset = false)
+* Middleware `through` ($anywhere, string $name)
+* Middleware `through` ($anywhere, string $name, bool $reset = false)
+* Middleware `through` ($anywhere, bool $reset = false, string $name = null)
     - `anywhere` a callback or set of callbacks.
     - `reset` empty the through callbacks before add a callback.
+    - `name` name the middleware.
 * Middleware `finish` (callable $todo)
     - `todo` what to do when finished. `todo` gets two arguments ($origin, $goods) and must return new values or `$goods`. `$origin` is the value passed to `send`, `$goods` is the value returned from the callable which is passed to `to`.
 * callable `pack` ()

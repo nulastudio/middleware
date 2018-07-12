@@ -42,17 +42,28 @@ class Middleware
         return $this;
     }
 
-    public function through($anywhere, bool $reset = false)
+    public function through($anywhere, ...$exparams)
     {
-        if ($reset) {
-            $this->through = [];
+        @list($param1, $param2) = $exparams;
+        if ($param1 === true || $param2 === true) {
+            $this->reset();
         }
         if (is_callable($anywhere)) {
-            $this->through[] = $anywhere;
+            if (is_string($param1)) {
+                $this->through[$param1] = $anywhere;
+            } else if (is_string($param2)) {
+                $this->through[$param2] = $anywhere;
+            } else {
+                $this->through[] = $anywhere;
+            }
         } elseif (is_array($anywhere)) {
-            foreach ($anywhere as $somewhere) {
+            foreach ($anywhere as $name => $somewhere) {
                 if (is_callable($somewhere)) {
-                    $this->through[] = $somewhere;
+                    if (is_string($name)) {
+                        $this->through[$name] = $somewhere;
+                    } else {
+                        $this->through[] = $somewhere;
+                    }
                 } else {
                     trigger_error('Not valid callback.', E_USER_WARNING);
                 }
@@ -99,3 +110,5 @@ class Middleware
     }
 
 }
+
+var_dump(Middleware::newInstance()->to(function () {})->through(function () {}, true, 'aaa')->pack());
