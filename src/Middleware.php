@@ -110,5 +110,3 @@ class Middleware
     }
 
 }
-
-var_dump(Middleware::newInstance()->to(function () {})->through(function () {}, true, 'aaa')->pack());
